@@ -1,2 +1,10 @@
 /bin/
 /build/
+﻿*~
+.gradle
+/build
+*.classpath
+*.project
+*.settings
+/bin
+.nb-gradle
