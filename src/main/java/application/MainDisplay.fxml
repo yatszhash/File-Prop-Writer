@@ -5,22 +5,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="395.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane minHeight="515.0" minWidth="558.0" prefHeight="515.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <SplitPane dividerPositions="0.46464646464646464" layoutY="-45.0" orientation="VERTICAL" prefHeight="440.0" prefWidth="512.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-85.0" AnchorPane.topAnchor="-45.0">
+      <SplitPane dividerPositions="0.46464646464646464" layoutY="-22.0" orientation="VERTICAL" prefHeight="515.0" prefWidth="558.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="93.0" prefWidth="479.0">
                <children>
-                  <VBox prefHeight="180.0" prefWidth="425.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox prefHeight="235.0" prefWidth="558.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane prefHeight="61.0" prefWidth="425.0">
+                        <AnchorPane prefHeight="61.0" prefWidth="558.0">
                            <children>
                               <TextField fx:id="folderPathField" layoutX="37.0" layoutY="18.0" prefHeight="25.0" prefWidth="292.0" />
                               <Button fx:id="selectFolderButton" layoutX="343.0" layoutY="18.0" mnemonicParsing="false" onAction="#selectFolder" text="Select Folder" />
                               <Label fx:id="label" layoutX="56.0" layoutY="22.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="52.0" prefWidth="425.0">
+                        <AnchorPane prefHeight="52.0" prefWidth="558.0" visible="false">
                            <children>
                               <GridPane disable="true" layoutY="-31.0" prefHeight="59.0" prefWidth="425.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
@@ -51,7 +51,7 @@
                   </VBox>
                </children>
             </AnchorPane>
-          <AnchorPane prefHeight="247.0" prefWidth="473.0">
+          <AnchorPane prefHeight="247.0" prefWidth="558.0">
                <children>
                   <ScrollPane layoutX="13.0" layoutY="6.0" prefHeight="231.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <content>

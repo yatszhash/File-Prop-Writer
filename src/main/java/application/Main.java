@@ -12,8 +12,11 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try
 		{
+			final int defaultWindowHeight = 550;
+			final int defaultWindowWidth =550;
+
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("MainDisplay.fxml"));
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root,defaultWindowHeight, defaultWindowWidth);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();

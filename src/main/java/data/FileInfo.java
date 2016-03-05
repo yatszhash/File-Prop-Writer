@@ -150,8 +150,9 @@ public class FileInfo implements Iterable<FileInfo>, Comparable<FileInfo>
 	@Override
 	public Iterator<FileInfo> iterator()
 	{
-		//TODO retrieveChildrenを解さない(テストのため)に追加しているが冗長すぎる。
-		childrenInfos.sort(null);
+		//TODO retrieveChildrenを解さない(テストのため)に追加する必要あり。
+		//childrenInfos.sort(null);
+
 		iterator = new FileInfoIterator(childrenInfos.iterator());
 
 		if (!iterator.hasNext())
@@ -162,11 +163,17 @@ public class FileInfo implements Iterable<FileInfo>, Comparable<FileInfo>
 		return iterator;
 	}
 
+	public void sortChildrenRecursive()
+	{
+		childrenInfos.sort(null);
+		childrenInfos.stream().forEachOrdered(f -> f.sortChildrenRecursive());
+	}
+
 
 	public void writeProperties(File outputFile) throws IOException
 	{
-		//TODO Writerを再利用する。
-		//TODO writer optionを使う
+		//TODO reuse writer
+		//TODO adapt to writer option
 		//FileInfoWritingOption option = new FileInfoWritingOption(delimiter, isWriteSelf);
 		AbstractFileInfoWriter writer = new WriterFactory().createWriter(this, outputFile);
 		//writer.setOption(option)

@@ -64,6 +64,6 @@ javafx {
 	appName 'FilePropWriter'
 
 	// Main class of application
-	mainClass 'src/main/java/Main'
+	mainClass 'src/main/java/application/Main'
 
 }

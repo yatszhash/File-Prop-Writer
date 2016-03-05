@@ -130,10 +130,12 @@ public class FileInfoTest {
 			Gson gson = new GsonBuilder().create();
 
 			root = gson.fromJson(reader, FileInfo.class);
+			root.sortChildrenRecursive();
 		} catch (IOException e)
 		{
 			throw new UncheckedIOException(e);
 		}
+
 
 		return root;
 	}
