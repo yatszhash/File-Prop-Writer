@@ -8,3 +8,6 @@
 *.settings
 /bin
 .nb-gradle*.classpath
+.classpath
+.settings
+.project
