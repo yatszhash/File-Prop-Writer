@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="395.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <SplitPane dividerPositions="0.46464646464646464" layoutY="-45.0" orientation="VERTICAL" prefHeight="440.0" prefWidth="512.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-85.0" AnchorPane.topAnchor="-45.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="93.0" prefWidth="479.0">
+               <children>
+                  <VBox prefHeight="180.0" prefWidth="425.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane prefHeight="61.0" prefWidth="425.0">
+                           <children>
+                              <TextField fx:id="folderPathField" layoutX="37.0" layoutY="18.0" prefHeight="25.0" prefWidth="292.0" />
+                              <Button fx:id="selectFolderButton" layoutX="343.0" layoutY="18.0" mnemonicParsing="false" onAction="#selectFolder" text="Select Folder" />
+                              <Label fx:id="label" layoutX="56.0" layoutY="22.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="52.0" prefWidth="425.0">
+                           <children>
+                              <GridPane disable="true" layoutY="-31.0" prefHeight="59.0" prefWidth="425.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <CheckBox fx:id="fileTypeCheck" mnemonicParsing="false" text="type" GridPane.rowIndex="1" />
+                                    <CheckBox fx:id="abstractPathCheck" mnemonicParsing="false" text="absolute path" />
+                                    <CheckBox fx:id="fileVersionCheck" mnemonicParsing="false" text="version" GridPane.rowIndex="2" />
+                                    <CheckBox fx:id="createdDateCheck" mnemonicParsing="false" text="creattion date" GridPane.columnIndex="1" />
+                                    <CheckBox fx:id="updatedDateCheck" mnemonicParsing="false" text="date　modifed" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <CheckBox fx:id="authorCheck" mnemonicParsing="false" text="author" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="67.0" prefWidth="425.0">
+                           <children>
+                              <Button fx:id="selectSaveFileButton" layoutX="442.0" layoutY="41.0" mnemonicParsing="false" onAction="#selectSaveFile" text="Save" />
+                           </children></AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane prefHeight="247.0" prefWidth="473.0">
+               <children>
+                  <ScrollPane layoutX="13.0" layoutY="6.0" prefHeight="231.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <content>
+                      <AnchorPane prefHeight="180.0" prefWidth="399.0">
+                           <children>
+                              <TreeTableView fx:id="fileInfoTable" layoutX="13.0" layoutY="6.0" prefHeight="213.0" prefWidth="471.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="-85.0" AnchorPane.topAnchor="6.0">
+                                <columns>
+                                  <TreeTableColumn prefWidth="75.0" text="C1" />
+                                  <TreeTableColumn prefWidth="75.0" text="C2" />
+                                </columns>
+                              </TreeTableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

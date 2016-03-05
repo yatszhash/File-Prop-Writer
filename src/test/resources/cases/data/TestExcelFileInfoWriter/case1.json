@@ -1,0 +1,34 @@
+{
+  "name":"root",
+  "absolutePath":"/root",
+
+  "childrenInfos":
+  [
+    {
+      "name":"folder1",
+      "absolutePath":"/root/folder1",
+      "childrenInfos":
+      [
+
+        {
+          "name":"text2.txt",
+          "absolutePath":"/root/folder1/text2.txt",
+          "type":"text/plain"
+        },
+        {
+          "name":"image1.png",
+          "absolutePath":"/root/follder1/image1.png",
+          "type":"png"
+        }
+
+      ]
+    },
+
+    {
+      "name":"text1.txt",
+      "type":"text/plain",
+      "absolutePath":"/root/text1.txt",
+      "childrenInfos":[]
+    }
+  ]
+}
