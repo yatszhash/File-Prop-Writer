@@ -2,8 +2,12 @@ package data;
 
 import java.util.Iterator;
 
-public class NullIterator implements Iterator<FileInfo>
+public class NullIterator extends FileInfoIterator
 {
+	public NullIterator() {
+
+	}
+
 	@Override
 	public FileInfo next()
 	{
@@ -16,4 +20,5 @@ public class NullIterator implements Iterator<FileInfo>
 		return false;
 	}
 
+	public void reStack(){}
 }

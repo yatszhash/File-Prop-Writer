@@ -32,9 +32,8 @@ public class FileInfo implements Iterable<FileInfo>, Comparable<FileInfo>
 	private String absolutePath;
 	//TODO 直接のgetter, setterを除去
 	private List<FileInfo> childrenInfos;
-
-	private ArrayList<File> fileList;
 	private Iterator<FileInfo> iterator;
+	private ArrayList<File> fileList;
 
 
 	/**
@@ -150,14 +149,18 @@ public class FileInfo implements Iterable<FileInfo>, Comparable<FileInfo>
 	@Override
 	public Iterator<FileInfo> iterator()
 	{
-		//TODO retrieveChildrenを解さない(テストのため)に追加する必要あり。
-		//childrenInfos.sort(null);
+		if (iterator == null)
+		{
 
-		iterator = new FileInfoIterator(childrenInfos.iterator());
+			iterator = new FileInfoIterator(new ArrayList<FileInfo>(childrenInfos));
+			//iterator = new FileInfoIterator(this);
+		}
+
+		((FileInfoIterator) iterator).reStack();
 
 		if (!iterator.hasNext())
 		{
-			return new NullIterator();
+			iterator =  new NullIterator();
 		}
 
 		return iterator;

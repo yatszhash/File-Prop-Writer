@@ -153,6 +153,7 @@ public class TextFileInfoWriterTest {
 		@Theory
 		public void testFromStream(ContentsFixture p) throws ReflectiveOperationException
 		{
+			p.fileInfo.sortChildrenRecursive();
 			sut = new WriterFactory().createWriter(p.fileInfo, new File(".txt"), p.option);
 
 			Class[] classArray = {OutputStream.class};

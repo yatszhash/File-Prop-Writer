@@ -1,16 +1,47 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Stack;
+
+import javafx.collections.transformation.SortedList;
 
 public class FileInfoIterator implements Iterator<FileInfo>
 {
 
-	private Stack<Iterator<FileInfo>> stack = new Stack<>();
+	private Stack<Iterator<FileInfo>> stack;
+	private List<FileInfo> cacheddList;
+	private FileInfo storedRoot;
 
-	public FileInfoIterator(Iterator<FileInfo> iterator)
+	protected FileInfoIterator(){}
+
+	//TODO clone時に下の階層の順序が変わる問題
+	public FileInfoIterator(List<FileInfo> storedList)
 	{
-		stack.push(iterator);
+		this.cacheddList = storedList;
+		stack = new Stack<>();
+		stack.push(storedList.iterator());
+	}
+
+	public FileInfoIterator(FileInfo root)
+	{
+		this.storedRoot = root;
+		stack = new Stack<>();
+		stack.push(root.getChildrenInfos().iterator());
+	}
+
+	public void reStack()
+	{
+		if (stack.empty())
+		{
+
+			stack = new Stack<>();
+
+			stack.push(cacheddList.iterator());
+
+			//stack.push(storedRoot.getChildrenInfos().iterator());
+		}
 	}
 
 	@Override
@@ -53,7 +84,7 @@ public class FileInfoIterator implements Iterator<FileInfo>
 		}
 	}
 
-	/*debug用*/
+	/*for debug*/
 	public static void main(String[] args)
 	{
 		String filePath = "test_data/FileInfoIteratorTest/case3/";
