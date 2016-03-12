@@ -1,0 +1,45 @@
+{
+  "name":"1",
+  "absolutePath":"/1",
+
+  "childrenInfos":
+  [
+    {
+      "name":"3",
+      "absolutePath":"/root/3",
+      "childrenInfos":
+      [
+
+        {
+          "name":"6.txt",
+          "absolutePath":"/root/3/text6.txt",
+          "type":"text/plain"
+        },
+        {
+          "name":"5",
+          "absolutePath":"/root/3/5",
+          "childrenInfos":
+          [
+            {
+              "name" : "7.txt",
+              "absolutePath" : "/root/3/5/7.txt"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name":"2.txt",
+      "type":"text/plain",
+      "absolutePath":"/1/2.txt"
+    },
+
+
+    {
+      "name":"4.txt",
+      "type":"text/plain",
+      "absolutePath":"/1/4.txt"
+    }
+  ]
+}

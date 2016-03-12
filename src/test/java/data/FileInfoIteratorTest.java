@@ -43,7 +43,6 @@ public class FileInfoIteratorTest {
 			{
 				root = new FileInfo(path.toFile());
 			}
-			root.sortChildrenRecursive();
 		}
 	}
 
@@ -63,7 +62,7 @@ public class FileInfoIteratorTest {
 
 		PARAMS = new Fixture[]
 		{
-			/*//case1: ファイルを指定した場合。
+			//case1: ファイルを指定した場合。
 			new Fixture(default_path + "case1.json", new String[0]),
 			//case2: 空のフォルダーを指定した場合。
 			new Fixture(default_path + "case2.json", new String[0]),
@@ -76,11 +75,12 @@ public class FileInfoIteratorTest {
 			//case5: 2層から
 			new Fixture(default_path + "case6.json",case6_names),
 			//case7: 実在するファイルから
-			new Fixture(default_path + "case7",case7_names),*/
+			new Fixture(default_path + "case7",case7_names),
 			//case8
 			new Fixture(default_path + "case8.json",case8_names),
-			new Fixture(default_path + "case9.json",case9_names),
 
+			new Fixture(default_path + "case9.json",case9_names),
+			new Fixture(default_path + "case10.json",case8_names),
 		};
 	}
 
@@ -91,7 +91,6 @@ public class FileInfoIteratorTest {
 		Iterator<FileInfo> iterator = p.root.iterator();
 
 		List<String> names = new ArrayList<>();
-
 
 		while(iterator.hasNext())
 		{

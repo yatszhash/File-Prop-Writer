@@ -7,10 +7,11 @@ import java.nio.file.NotDirectoryException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Optional;
+import java.util.Stack;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -48,9 +49,9 @@ public class FileInfo implements Iterable<FileInfo>, Comparable<FileInfo>
 		VERSION,
 	}
 
-	//TODO テスト終了後private化
+	//TODO after test, make private
 	/**
-	 * テスト用コンストラクタ
+	 * constructor for test
 	 */
 	public FileInfo()
 	{
@@ -68,11 +69,6 @@ public class FileInfo implements Iterable<FileInfo>, Comparable<FileInfo>
 		childrenInfos = retrieveChildren();
 	}
 
-	protected String retrieveAbsolutePath()
-	{
-		return path.toAbsolutePath().toString();
-	}
-
 	/*
 	public FileInfo(String absolutePath, String name, String type)
 	{
@@ -81,6 +77,12 @@ public class FileInfo implements Iterable<FileInfo>, Comparable<FileInfo>
 		this.type = type;
 		this.childrenInfos = new ArrayList<>();
 	}*/
+
+
+	protected String retrieveAbsolutePath()
+	{
+		return path.toAbsolutePath().toString();
+	}
 
 	protected String retrieveName()
 	{
@@ -131,7 +133,7 @@ public class FileInfo implements Iterable<FileInfo>, Comparable<FileInfo>
 	}
 
 	/**
-	 * テスト用インターフェース。
+	 * interface for test
 	 */
 	public void addChild(FileInfo fileInfo)
 	{
@@ -139,32 +141,27 @@ public class FileInfo implements Iterable<FileInfo>, Comparable<FileInfo>
 	}
 
 	/**
-	 * テスト用インターフェース。
+	 * interface for test
 	 */
 	public void addChildren(List<FileInfo> fileInfos)
 	{
 		childrenInfos.addAll(fileInfos);
 	}
 
+	public boolean hasChild()
+	{
+		if (childrenInfos != null && !childrenInfos.isEmpty()) return true;
+		return false;
+	}
+
+
 	@Override
 	public Iterator<FileInfo> iterator()
 	{
-		if (iterator == null)
-		{
-
-			iterator = new FileInfoIterator(new ArrayList<FileInfo>(childrenInfos));
-			//iterator = new FileInfoIterator(this);
-		}
-
-		((FileInfoIterator) iterator).reStack();
-
-		if (!iterator.hasNext())
-		{
-			iterator =  new NullIterator();
-		}
-
-		return iterator;
+		return new Itr(this);
 	}
+
+
 
 	public void sortChildrenRecursive()
 	{
@@ -221,6 +218,49 @@ public class FileInfo implements Iterable<FileInfo>, Comparable<FileInfo>
 
 	//TODO equalsをabstractPathを利用してoverride
 
+	private class Itr implements Iterator<FileInfo>
+	{
+		private Stack<FileInfo> stack;
+
+
+		Itr(FileInfo root)
+		{
+			stack = new Stack<>();
+			pushAllChildren(root);
+		}
+
+
+		@Override
+		public boolean hasNext() {
+			return !stack.isEmpty();
+		}
+
+		@Override
+		public FileInfo next() {
+			if (!hasNext()) {return null;}
+
+			FileInfo head = stack.pop();
+
+			pushAllChildren(head);
+
+			return head;
+		}
+
+		private void pushAllChildren(FileInfo fileInfo)
+		{
+			if(fileInfo.hasChild())
+			{
+				//TOOD worse Performance
+				ListIterator<FileInfo> listItr = fileInfo.getChildrenInfos().listIterator(
+													fileInfo.getChildrenInfos().size());
+
+				while(listItr.hasPrevious())
+				{
+					stack.push(listItr.previous());
+				}
+			}
+		}
+	}
 
 
 }

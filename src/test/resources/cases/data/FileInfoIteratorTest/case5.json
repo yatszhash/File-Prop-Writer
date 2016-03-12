@@ -1,0 +1,11 @@
+{
+  "name":"1",
+  "absolutePath":"/1",
+  "childrenInfos":
+  [
+    {
+      "name":"2.txt",
+      "absolutePath":"/root/2.txt"
+    }
+  ]
+}

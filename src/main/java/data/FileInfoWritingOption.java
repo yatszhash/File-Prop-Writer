@@ -18,7 +18,7 @@ public class FileInfoWritingOption
 	private ENCODES encode;
 	private String delimiter;
 	private int depthLayer;
-	private boolean isWriteSelf;
+	private boolean shouldWriteOwn;
 
 	//TODO encapsulation
 	private LinkedHashMap<FileInfo.PROPERTY_NAMES, Boolean> targetProperties;
@@ -28,7 +28,7 @@ public class FileInfoWritingOption
 		isWithHeader = false;
 		encode = ENCODES.UTF8;
 		delimiter = ",";
-		isWriteSelf = false;
+		shouldWriteOwn = false;
 		targetProperties = new LinkedHashMap<>();
 		Arrays.stream(FileInfo.PROPERTY_NAMES.values()).forEach(p -> targetProperties.put(p, false));
 		targetProperties.put(FileInfo.PROPERTY_NAMES.NAME, true);
